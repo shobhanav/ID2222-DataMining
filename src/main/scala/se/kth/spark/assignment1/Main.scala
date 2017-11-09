@@ -11,6 +11,8 @@ object Main {
   
   hashShingles.collect().foreach(println)
   
+  //compute jaccard similarity among documents
+  
   
   }
   
