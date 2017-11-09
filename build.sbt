@@ -15,7 +15,7 @@ libraryDependencies += "org.apache.spark" %% "spark-mllib" % "2.0.1" % "provided
 libraryDependencies += "org.log4s" %% "log4s" % "1.3.3" % "provided"
 libraryDependencies += "se.kth.spark" %% "lab1_lib" % "1.0-SNAPSHOT"
 
-mainClass in assembly := Some("se.kth.spark.assignment1.Shingling")
+mainClass in assembly := Some("se.kth.spark.assignment1.Main")
 
 run in Compile := Defaults.runTask(fullClasspath in Compile, mainClass in (Compile, run), runner in (Compile, run)).evaluated
 
