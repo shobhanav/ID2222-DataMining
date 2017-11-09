@@ -2,15 +2,15 @@ package se.kth.spark.assignment1
 
 class MinHashing(sigLen: Int) extends Serializable{
   val r = scala.util.Random
+  val prime = 4294975753L
+  val coefA = generateCoef(sigLen, Int.MaxValue)
+  val coefB = generateCoef(sigLen, Int.MaxValue)
 
   def generateCoef(n: Int, m: Int): IndexedSeq[Int] = {
     return for (i <- 1 to n) yield r.nextInt(m)
   }
 
   def sig(shingles: List[Int]): Array[BigInt] = {
-    val prime = 4294975753L
-    val coefA = generateCoef(sigLen, Int.MaxValue)
-    val coefB = generateCoef(sigLen, Int.MaxValue)
 
     val sigInit = Array.fill[BigInt](coefA.length)(prime + 1)
     return shingles.aggregate(sigInit)((sigTmp, shingle) => {
