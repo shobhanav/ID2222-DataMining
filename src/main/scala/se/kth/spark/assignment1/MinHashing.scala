@@ -1,7 +1,7 @@
 package se.kth.spark.assignment1
 
 class MinHashing(sigLen: Int) extends Serializable{
-  val r = scala.util.Random
+  val r = new scala.util.Random(99744299)
   val prime = 4294975753L
   val coefA = generateCoef(sigLen, Int.MaxValue)
   val coefB = generateCoef(sigLen, Int.MaxValue)
