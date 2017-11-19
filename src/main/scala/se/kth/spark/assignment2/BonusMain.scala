@@ -14,7 +14,7 @@ object BonusMain {
     println("Baskets:", baskets.count())
     val s = 1000
     
-    val minc = 0.01 //(0.01% confidence)
+    val minc = 0.0 //(0.01% confidence)
     println("Support", s)
     val founded = Main.findFreqItems(baskets, s)
     
@@ -38,7 +38,7 @@ object BonusMain {
         return temp
       }
       
-      for(i:Int <- 2 to largeItemSet.size -1){
+      for(i:Int <- 1 to largeItemSet.size -1){
          temp = temp ++ largeItemSet.toSeq.combinations(i).toArray.map(s => (s.toSet,largeItemSet.diff(s.toSet), 
              supp.doubleValue()/(all.filter(x => s.toSet subsetOf x).count())))
       }
