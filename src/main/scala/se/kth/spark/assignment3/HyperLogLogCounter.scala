@@ -3,9 +3,10 @@ package se.kth.spark.assignment3
 import org.apache.spark.{SparkConf, SparkContext}
 
 object HyperLogLogCounter { 
-  
-  val b: Int = 5
-  val a: Double = 0.693 // value depends on b
+
+  val b: Int = 4
+  val a: Double = 0.673 // value depends on b
+
   val counter:Array[Int] = Array.fill[Int](scala.math.pow(2, b).toInt)(0)  
   
   
