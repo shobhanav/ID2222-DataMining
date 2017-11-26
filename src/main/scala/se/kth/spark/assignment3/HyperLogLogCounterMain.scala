@@ -2,7 +2,7 @@ package se.kth.spark.assignment3
 
 import org.apache.spark.{SparkConf, SparkContext}
 
-object HyperLogLogCounter { 
+object HyperLogLogCounterMain {
 
   val b: Int = 4
   val a: Double = 0.673 // value depends on b
