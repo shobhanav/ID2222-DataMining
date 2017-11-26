@@ -7,6 +7,7 @@ import scala.collection.mutable.HashMap
 class HyperBall(graph: Array[(VertexId, Array[(VertexId, Int)])]) {
   val c: HashMap[Int, HyperLogLogCounter] = HashMap.empty[Int, HyperLogLogCounter]
   var t = 0
+  var distance: Double = 0
 
 
   graph.foreach((v) => {
@@ -30,6 +31,9 @@ class HyperBall(graph: Array[(VertexId, Array[(VertexId, Int)])]) {
           val w = n._1.toInt
           a.union(c(w))
         })
+        val d = (a.getCardinality() - c(v).getCardinality())
+        distance += ((t + 1) * d)
+        //println("t: " + t + " D: " + distance)
       })
 
       graph.foreach(ver => {
@@ -41,8 +45,9 @@ class HyperBall(graph: Array[(VertexId, Array[(VertexId, Int)])]) {
         c(idx) = pairs(idx)
       })
       t += 1
-      println("t: " + t)
+      println("t: " + t + " D: " + distance)
     }
+    println("closeness=" + (1/distance))
   }
 }
 
