@@ -1,7 +1,7 @@
 clc;
 %E = csvread('example1.dat');
 E = csvread('example2.dat');
-k = 10;
+k = 2;
 
 col1 = E(:,1);
 col2 = E(:,2);
@@ -10,7 +10,7 @@ As= sparse(col1, col2, 1, max_ids, max_ids);
 A = full(As);
 
 G = graph(A,'OmitSelfLoops');
-p = plot(G,'layout','force','Marker','.','MarkerSize',4.5);
+p = plot(G,'layout','force','Marker','.','MarkerSize',10);
 title('Graph');
 axis equal
 
@@ -23,7 +23,12 @@ L = (D^(-0.5))*A*(D^(-0.5));
 % normalizing
 Y = X./sqrt(sum(X.^2,2));
 
-fv = sort(X(:,1));
+[v,D] = eigs(L, 50, 'SA');
+figure,
+plot(sort(diag(D)),'+');
+title('Sorted eigenvalues');
+
+fv = sort(v(:,1));
 figure,
 plot(fv,'+');
 title('Sorted Fiedler Vector');
@@ -32,7 +37,7 @@ idx = kmeans(Y,k);
 
 color = {'k','r','b','g','y'};
 
-cc=hsv(12);
+cc=hsv(10);
 for i=1:k
     highlight(p,find(idx==i),'NodeColor',cc(i,:))
 end
